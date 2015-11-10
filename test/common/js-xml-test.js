@@ -1,8 +1,8 @@
 "use strict";
 QUnit.module(module.id);
 
-var jsxml = require("js-xml");
-var revivers = require("js-xml/lib/revivers");
+var jsxml = require("../..");
+var revivers = require("../../lib/revivers");
 
 function parseTest(xml, js, skipRT) {
 	deepEqual(jsxml.parse(xml), js, "parse " + xml);

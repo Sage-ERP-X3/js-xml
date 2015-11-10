@@ -1,0 +1,25 @@
+{
+  "name": "js-xml",
+  "description": "Simple XML parser formatter for JavaScript",
+  "version": "1.0.0",
+  "license": "MIT",
+  "homepage": "http://github.com/Sage-ERP-X3/js-xml",
+  "author": {
+    "name": "Bruno Jouhier"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Sage-ERP-X3/js-xml.git"
+  },
+  "devDependencies": {
+    "qunit": "^0.7.7"
+  },
+  "scripts": {
+    "test": "node test"
+  },
+  "main": "index.js",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/Sage-ERP-X3/js-xml/issues"
+  }
+}

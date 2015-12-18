@@ -72,6 +72,16 @@ test('simple tag with attributes', 10, function() {
 	});
 });
 
+test('attribute with simple quote', 1, function() {
+	parseTest("<a x='3'/>", {
+		a: {
+			$: {
+				x: "3"
+			},
+		}
+	}, true);
+});
+
 test('entities', 4, function() {
 	parseTest('<a x="a&gt;b&apos;c&lt;"/>', {
 		a: {

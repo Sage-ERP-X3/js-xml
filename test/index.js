@@ -19,6 +19,7 @@ process.on('uncaughtException', function(err) {
 testrunner.run({
 	code: '',
     tests: tests,
+    maxBlockDuration: 30 * 1000,
 }, function(err) {
 	if (err) throw err;
 });

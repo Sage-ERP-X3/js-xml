@@ -4,9 +4,13 @@ QUnit.module(module.id);
 var jsxml = require("../..");
 var revivers = require("../../lib/revivers");
 
+function short(s) {
+	return s.length < 50 ? s : s.substring(0, 47) + '...';
+}
+
 function parseTest(xml, js, skipRT) {
-	deepEqual(jsxml.parse(xml), js, "parse " + xml);
-	if (!skipRT) strictEqual(jsxml.stringify(jsxml.parse(xml)), xml, "roundtrip " + xml);
+	deepEqual(jsxml.parse(xml), js, "parse " + short(xml));
+	if (!skipRT) strictEqual(jsxml.stringify(jsxml.parse(xml)), xml, "roundtrip " + short(xml));
 }
 
 function parseNsTest(xml, js) {
@@ -219,4 +223,32 @@ test('simplify', 1, function() {
 			c: ["4", "5", null]
 		}
 	}, revivers.simplify);
+});
+
+test('escaping', 2, function() {
+	var xml = '<a>';
+	var js = '';
+	for (var i = 0; i < 0x10000; i++) {
+		// tab, cr, lf, ' and " could be formatted verbatim but we escape them
+		if ((i >= 0x20 && i <= 0xd7ff) || (i >= 0xe000 && i <= 0xfffd)) {
+			if (i >= 0x2000 && i < 0xd000) continue; // skip to speed up test
+			var ch = String.fromCharCode(i);
+			if (ch === '<') xml += '&lt;'
+			else if (ch === '>') xml += '&gt;'
+			else if (ch === '&') xml += '&amp;'
+			else if (ch === '"') xml += '&quot;'
+			else if (ch === "'") xml += '&apos;'
+			else xml += ch;
+		} else {
+			var hex = i.toString(16);
+			while (hex.length < 2) hex = '0' + hex;
+			while (hex.length > 2 && hex.length < 4) hex = '0' + hex;
+			xml += '&#x' + hex + ';'
+		}
+		js += String.fromCharCode(i);
+	}
+	xml += '</a>';
+	parseTest(xml, {
+		a: js 
+	}); 
 });

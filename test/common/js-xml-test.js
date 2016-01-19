@@ -230,7 +230,7 @@ test('escaping', 2, function() {
 	var js = '';
 	for (var i = 0; i < 0x10000; i++) {
 		// tab, cr, lf, ' and " could be formatted verbatim but we escape them
-		if ((i >= 0x20 && i <= 0xd7ff) || (i >= 0xe000 && i <= 0xfffd)) {
+		if ((i >= 0x20 && i <= 0x7e) || (i >= 0xa1 && i <= 0xd7ff) || (i >= 0xe000 && i <= 0xfffd)) {
 			if (i >= 0x2000 && i < 0xd000) continue; // skip to speed up test
 			var ch = String.fromCharCode(i);
 			if (ch === '<') xml += '&lt;'

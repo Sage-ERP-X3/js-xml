@@ -1,0 +1,20 @@
+{
+    "editor.formatOnSave": true,
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/build": true
+    },
+    "debug.node.autoAttach": "on",
+    "files.insertFinalNewline": true,
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "git.ignoreLimitWarning": true,
+    "[typescript]": {
+        "editor.insertSpaces": true
+    },
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": false
+    },
+    "editor.rulers": [120],
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false
+}

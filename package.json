@@ -1,25 +1,35 @@
 {
-  "name": "js-xml",
-  "description": "Simple XML parser formatter for JavaScript",
-  "version": "1.0.3",
-  "license": "MIT",
-  "homepage": "http://github.com/Sage-ERP-X3/js-xml",
-  "author": {
-    "name": "Bruno Jouhier"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/Sage-ERP-X3/js-xml.git"
-  },
-  "devDependencies": {
-    "qunit": "^0.7.7"
-  },
-  "scripts": {
-    "test": "node test"
-  },
-  "main": "index.js",
-  "readmeFilename": "README.md",
-  "bugs": {
-    "url": "https://github.com/Sage-ERP-X3/js-xml/issues"
-  }
+    "name": "js-xml",
+    "description": "Simple XML parser formatter for JavaScript",
+    "version": "2.0.0",
+    "license": "MIT",
+    "homepage": "http://github.com/Sage-ERP-X3/js-xml",
+    "author": {
+        "name": "Bruno Jouhier"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/Sage-ERP-X3/js-xml.git"
+    },
+    "devDependencies": {
+        "@types/chai": "^3.4.34",
+        "@types/mocha": "^5.2.4",
+        "chai": "^4.1.2",
+        "mocha": "^5.2.0",
+        "tslint": "^5.18.0",
+        "typescript": "^2.9.2"
+    },
+    "scripts": {
+        "clean": "rm -rf node_modules build package-lock.json",
+        "prepare": "tsc",
+        "build": "tsc",
+        "lint": "tslint -e 'node_modules/**' -p .",
+        "test": "mocha build/test"
+    },
+    "main": "build/index.js",
+    "typings": "build/index.d.ts",
+    "readmeFilename": "README.md",
+    "bugs": {
+        "url": "https://github.com/Sage-ERP-X3/js-xml/issues"
+    }
 }

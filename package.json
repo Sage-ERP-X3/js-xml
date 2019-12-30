@@ -21,6 +21,7 @@
     },
     "scripts": {
         "clean": "rm -rf node_modules build package-lock.json",
+        "prepare": "tsc",
         "build": "tsc",
         "lint": "tslint -e 'node_modules/**' -p .",
         "test": "mocha build/test"
